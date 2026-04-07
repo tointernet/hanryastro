@@ -92,7 +92,7 @@ function capture() {
       link.download = "ig-result.png";
       link.href = canvas.toDataURL();
       link.click();
-
+ scale: 2
       card.style.opacity = "0";
       card.style.zIndex = "-1";
     });
