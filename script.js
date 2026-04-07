@@ -81,6 +81,13 @@ function share() {
       text: "來測看看你的結果",
       url: location.href
     });
+    function getImage(element, count) {
+  // 保護機制（避免超過3）
+  if (count > 3) count = 3;
+  if (count < 0) count = 0;
+
+  return `images/${element}_${count}.png`;
+}
   } else {
     alert("請手動分享網址");
   }
