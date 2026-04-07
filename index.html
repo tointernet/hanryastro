@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
+function capture() {
+  html2canvas(document.getElementById("result-page")).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "result.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+function share() {
+  if (navigator.share) {
+    navigator.share({
+      title: "占卜結果",
+      text: "來測看看你的結果",
+      url: location.href
+    });
+  } else {
+    alert("請手動分享網址");
+  }
+}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>占卜測驗</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- 題目頁 -->
+  <div id="question-page">
+    <div id="progress"></div>
+    <h2 id="question-text"></h2>
+
+    <button onclick="handleAnswer(true)" class="btn yes">是</button>
+    <button onclick="handleAnswer(false)" class="btn no">否</button>
+  </div>
+
+  <!-- 結果頁 -->
+  <div id="result-page" style="display:none;">
+    <h2>你的結果</h2>
+    <p id="total"></p>
+
+    <div id="results"></div>
+
+    <button onclick="capture()">截圖</button>
+    <button onclick="share()">分享</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
