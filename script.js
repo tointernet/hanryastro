@@ -52,7 +52,7 @@ function showResult() {
     }
   });
 
-  // 👉 顯示一般結果圖（畫面上）
+  // 畫面顯示（直排）
   const container = document.getElementById("results");
   container.innerHTML = "";
 
@@ -65,21 +65,21 @@ function showResult() {
     container.appendChild(img);
   });
 
-  // 👉 設定 IG 分享圖（關鍵）
+  // 🔥 設定 IG 分享卡圖片
   document.getElementById("img-fire").src = getImage("fire", elements.fire);
   document.getElementById("img-earth").src = getImage("earth", elements.earth);
   document.getElementById("img-water").src = getImage("water", elements.water);
   document.getElementById("img-air").src = getImage("air", elements.air);
 }
 
-// 🔥 圖片對應
+// 圖片對應
 function getImage(element, count) {
   if (count > 3) count = 3;
   if (count < 0) count = 0;
   return `images/${element}_${count}.png`;
 }
 
-// 📸 IG截圖（只留一個版本）
+// 📸 IG截圖（穩定版）
 function capture() {
   const card = document.getElementById("share-card");
 
@@ -96,10 +96,10 @@ function capture() {
       card.style.opacity = "0";
       card.style.zIndex = "-1";
     });
-  }, 500); // 等圖片載入
+  }, 500);
 }
 
-// 📤 分享
+// 分享
 function share() {
   if (navigator.share) {
     navigator.share({
