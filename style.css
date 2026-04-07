@@ -3,7 +3,7 @@ body {
   text-align: center;
   padding: 20px;
 }
-
+background: linear-gradient(135deg, #f5f7fa, #e4ecff);
 .btn {
   width: 80%;
   padding: 20px;
