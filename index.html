@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>占卜測驗</title>
+
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
 </head>
@@ -25,24 +26,30 @@
   <!-- 結果頁 -->
   <div id="result-page" style="display:none;">
     <div id="results"></div>
-<div id="share-card">
-  <div class="share-title">你的元素比例</div>
 
-  <img id="img-fire" class="share-img">
-  <img id="img-earth" class="share-img">
-  <img id="img-water" class="share-img">
-  <img id="img-air" class="share-img">
-
-  <div class="share-footer">@你的品牌</div>
-</div>
     <button onclick="capture()">截圖</button>
     <button onclick="share()">分享</button>
   </div>
 
+  <!-- 🔥 IG 分享卡 -->
+  <div id="share-card">
+
+    <div class="share-title">你的元素比例</div>
+    <div class="share-desc">你的內在能量分佈</div>
+
+    <div class="grid">
+      <img id="img-fire" class="grid-img">
+      <img id="img-earth" class="grid-img">
+      <img id="img-water" class="grid-img">
+      <img id="img-air" class="grid-img">
+    </div>
+
+    <div class="share-footer">@你的品牌</div>
+
+  </div>
+
 </div>
-<div class="share-desc">
-  你是感性與行動並存的人
-</div>
+
 <script src="script.js"></script>
 </body>
 </html>
