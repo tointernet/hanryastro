@@ -49,7 +49,18 @@ function showResult() {
     if (ans) {
       elements[questions[i].element]++;
     }
+  }
+                 const imgs = document.querySelectorAll("#share-card img");
+
+Promise.all([...imgs].map(img => {
+  return new Promise(resolve => {
+    if (img.complete) resolve();
+    else img.onload = resolve;
   });
+}))
+  .then(() => {
+  // 圖片全部載入完成
+});
 
   const container = document.getElementById("results");
   container.innerHTML = "";
