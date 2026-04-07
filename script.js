@@ -65,3 +65,23 @@ function showResult() {
 }
 
 renderQuestion();
+function capture() {
+  html2canvas(document.getElementById("result-page")).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "result.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+
+function share() {
+  if (navigator.share) {
+    navigator.share({
+      title: "占卜結果",
+      text: "來測看看你的結果",
+      url: location.href
+    });
+  } else {
+    alert("請手動分享網址");
+  }
+}
