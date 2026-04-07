@@ -90,12 +90,22 @@ function capture() {
 function capture() {
   const card = document.getElementById("share-card");
 
-  html2canvas(card).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "ig-result.png";
-    link.href = canvas.toDataURL();
-    link.click();
-  });
+  // 先顯示
+  card.style.opacity = "1";
+  card.style.zIndex = "999";
+
+  setTimeout(() => {
+    html2canvas(card).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "ig-result.png";
+      link.href = canvas.toDataURL();
+      link.click();
+
+      // 截完再隱藏
+      card.style.opacity = "0";
+      card.style.zIndex = "-1";
+    });
+  }, 300); // 等圖片渲染
 }
 // 📤 分享
 function share() {
