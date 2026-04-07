@@ -66,7 +66,10 @@ function showResult() {
     container.appendChild(img);
   });
 }
-
+document.getElementById("img-fire").src = getImage("fire", elements.fire);
+document.getElementById("img-earth").src = getImage("earth", elements.earth);
+document.getElementById("img-water").src = getImage("water", elements.water);
+document.getElementById("img-air").src = getImage("air", elements.air);
 // 🔥 圖片對應
 function getImage(element, count) {
   if (count > 3) count = 3;
@@ -84,7 +87,16 @@ function capture() {
     link.click();
   });
 }
+function capture() {
+  const card = document.getElementById("share-card");
 
+  html2canvas(card).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "ig-result.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
 // 📤 分享
 function share() {
   if (navigator.share) {
