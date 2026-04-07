@@ -42,15 +42,32 @@ function showResult() {
   document.getElementById("question-page").style.display = "none";
   document.getElementById("result-page").style.display = "block";
 
-  let totalYes = 0;
   let elements = { fire:0, earth:0, water:0, air:0 };
 
+  // 計算每個元素的「是」
   answers.forEach((ans, i) => {
     if (ans) {
-      totalYes++;
       elements[questions[i].element]++;
     }
   });
+
+  const container = document.getElementById("results");
+  container.innerHTML = "";
+
+  // 依序輸出四個元素（固定順序）
+  const order = ["fire", "earth", "water", "air"];
+
+  order.forEach(key => {
+    const count = elements[key];
+
+    const img = document.createElement("img");
+    img.src = getImage(key, count);
+
+    img.classList.add("result-img");
+
+    container.appendChild(img);
+  });
+}
 
   document.getElementById("total").innerText = `是：${totalYes}`;
 
