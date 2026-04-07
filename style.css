@@ -2,8 +2,10 @@ body {
   font-family: sans-serif;
   text-align: center;
   padding: 20px;
+
+  background: linear-gradient(135deg, #f5f7fa, #e4ecff);
 }
-background: linear-gradient(135deg, #f5f7fa, #e4ecff);
+
 .btn {
   width: 80%;
   padding: 20px;
@@ -29,4 +31,55 @@ background: linear-gradient(135deg, #f5f7fa, #e4ecff);
   width: 90%;
   margin: 12px 0;
   border-radius: 16px;
+}
+
+/* 🔥 IG 分享卡 */
+#share-card {
+  width: 1080px;
+  height: 1080px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  z-index: -1;
+
+  background: linear-gradient(135deg, #f5f7fa, #e4ecff);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+.share-title {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.share-desc {
+  font-size: 28px;
+  opacity: 0.7;
+}
+
+/* 🔥 2x2 排版 */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+}
+
+.grid-img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.share-footer {
+  font-size: 28px;
+  opacity: 0.6;
 }
