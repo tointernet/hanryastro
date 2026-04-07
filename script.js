@@ -39,6 +39,7 @@ function handleAnswer(isYes) {
   }, 200);
 }
 
+// 🔥 顯示結果
 function showResult() {
   document.getElementById("question-page").style.display = "none";
   document.getElementById("result-page").style.display = "block";
@@ -49,59 +50,39 @@ function showResult() {
     if (ans) {
       elements[questions[i].element]++;
     }
-  }
-                 const imgs = document.querySelectorAll("#share-card img");
-
-Promise.all([...imgs].map(img => {
-  return new Promise(resolve => {
-    if (img.complete) resolve();
-    else img.onload = resolve;
   });
-}))
-  .then(() => {
-  // 圖片全部載入完成
-});
 
+  // 👉 顯示一般結果圖（畫面上）
   const container = document.getElementById("results");
   container.innerHTML = "";
 
   const order = ["fire", "earth", "water", "air"];
 
   order.forEach(key => {
-    const count = elements[key];
-
     const img = document.createElement("img");
-    img.src = getImage(key, count);
+    img.src = getImage(key, elements[key]);
     img.classList.add("result-img");
-
     container.appendChild(img);
   });
+
+  // 👉 設定 IG 分享圖（關鍵）
+  document.getElementById("img-fire").src = getImage("fire", elements.fire);
+  document.getElementById("img-earth").src = getImage("earth", elements.earth);
+  document.getElementById("img-water").src = getImage("water", elements.water);
+  document.getElementById("img-air").src = getImage("air", elements.air);
 }
-document.getElementById("img-fire").src = getImage("fire", elements.fire);
-document.getElementById("img-earth").src = getImage("earth", elements.earth);
-document.getElementById("img-water").src = getImage("water", elements.water);
-document.getElementById("img-air").src = getImage("air", elements.air);
+
 // 🔥 圖片對應
 function getImage(element, count) {
   if (count > 3) count = 3;
   if (count < 0) count = 0;
-
   return `images/${element}_${count}.png`;
 }
 
-// 📸 截圖
-function capture() {
-  html2canvas(document.getElementById("result-page")).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "result.png";
-    link.href = canvas.toDataURL();
-    link.click();
-  });
-}
+// 📸 IG截圖（只留一個版本）
 function capture() {
   const card = document.getElementById("share-card");
 
-  // 先顯示
   card.style.opacity = "1";
   card.style.zIndex = "999";
 
@@ -112,12 +93,12 @@ function capture() {
       link.href = canvas.toDataURL();
       link.click();
 
-      // 截完再隱藏
       card.style.opacity = "0";
       card.style.zIndex = "-1";
     });
-  }, 300); // 等圖片渲染
+  }, 500); // 等圖片載入
 }
+
 // 📤 分享
 function share() {
   if (navigator.share) {
